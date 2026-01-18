@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud detection system</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar"> 
+        <div class="nav-brand"> Fraud Detection</div>
+        <div class="nav-links">
+            <a href="/">Predict</a>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+    </nav>
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1>AI-Powered Fraud Detection</h1>
+            <p>Analyze transaction risk in real time using machine learning</p>
+        </section>
+
+        <!-- PREDICTION CARD -->
+        <section class="card">
+            <h2>Transaction Details</h2>
+
+            <form id="prediction-form">
+
+                <!-- ROW 1 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Transaction Type</label>
+                        <select name="transaction_type" required>
+                            <option value="">Select</option>
+                            <option value="P2P">P2P</option>
+                            <option value="P2M">P2M</option>
+                            <option value="Bill Payment">Bill Payment</option>
+                            <option value="Recharge">Recharge</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Transaction Status</label>
+                        <select name="transaction_status" required>
+                            <option value="">Select</option>
+                            <option value="SUCCESS">SUCCESS</option>
+                            <option value="FAILED">FAILED</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Amount (INR)</label>
+                        <input type="number" name="amount" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Merchant Category</label>
+                        <input type="text" name="merchant_category" placeholder="Grocery, Fuel, Food..." required>
+                    </div>
+                </div>
+
+                <!-- ROW 3 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Sender Age</label>
+                        <input type="number" name="sender_age" min="18" max="100" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Receiver Age</label>
+                        <input type="number" name="receiver_age" min="18" max="100" required>
+                    </div>
+                </div>
+
+                <!-- ROW 4 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Sender State</label>
+                        <input type="text" name="sender_state" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sender Bank</label>
+                        <input type="text" name="sender_bank" required>
+                    </div>
+                </div>
+
+                <!-- ROW 5 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Receiver Bank</label>
+                        <input type="text" name="receiver_bank" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Device Type</label>
+                        <select name="device_type" required>
+                            <option value="">Select</option>
+                            <option value="Android">Android</option>
+                            <option value="iOS">iOS</option>
+                            <option value="Web">Web</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ROW 6 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Network Type</label>
+<select name="network_type" required>
+                            <option value="">Select</option>
+                            <option value="WiFi">WiFi</option>
+                            <option value="3G">3G</option>
+                            <option value="4G">4G</option>
+                            <option value="5G">5G</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hour of Day (0–23)</label>
+                        <input type="number" name="hour_of_day" min="0" max="23" required>
+                    </div>
+                </div>
+
+                <!-- ROW 7 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Day of Week</label>
+                        <select name="day_of_week" required>
+                            <option value="">Select</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="is_weekend">
+                            Weekend Transaction
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="btn-primary">
+                    Predict Fraud Risk
+                </button>
+
+            </form>
+        </section>
+
+        <!-- RESULT CARD -->
+        <section class="card result-card" id="result-card" style="display:none;">
+            <h2>Prediction Result</h2>
+            <p id="result-text"></p>
+        </section>
+
+    </main>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+</body>
+</html>
