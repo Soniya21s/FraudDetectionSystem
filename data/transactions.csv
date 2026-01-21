@@ -1,0 +1,5 @@
+transaction type,transaction_status,amount,merchant_category,sender_age,receiver_age,sender_state,sender_bank,receiver_bank,device_type,network_type,hour_of_day,day_of_week,is_weekend,fraud_probability,fraud_flag,decision,timestamp
+P2M,SUCCESS,3400,Food,22,21,Maharashtra,Axis,SBI,iOS,3G,6,Tuesday,0,0.0012,0,SAFE,2026-01-21T15:24:22.442788
+Bill Payment,SUCCESS,3400,Grocery,31,47,Maharashtra,Axis,SBI,Web,4G,14,Tuesday,0,0.0013,0,SAFE,2026-01-21T15:38:08.573726
+Bill Payment,SUCCESS,3400,Grocery,31,47,Maharashtra,Axis,SBI,Web,4G,14,Tuesday,0,0.0013,0,SAFE,2026-01-21T15:38:11.297322
+P2P,SUCCESS,2000,Grocery,25,26,Maharashtra,SBI,Axis,Android,WiFi,21,Wednesday,0,0.0209,1,FLAGGED,2026-01-21T15:40:51.451292

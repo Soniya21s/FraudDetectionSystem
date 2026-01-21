@@ -2,17 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fraud detection system</title>
+    <title>Fraud Analytics Dashboard</title>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Chart.js (we will use later) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>DASHBOARD</h1>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">Fraud Detection</div>
+        <div class="nav-links">
+            <a href="/">Predict</a>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+
+        <!-- HEADER -->
+        <section class="hero">
+            <h1>Fraud Analytics Dashboard</h1>
+            <p>Live insights from historical data and real-time predictions</p>
+        </section>
+
+        <!-- KPI CARDS -->
+        <section class="card">
+            <h2>Key Metrics</h2>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Total Transactions</h3>
+                    <p id="kpi-total">--</p>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Fraud Transactions</h3>
+                    <p id="kpi-fraud">--</p>
+                </div>
+
+                <div class="kpi-card">
+                    <h3>Fraud Rate (%)</h3>
+                    <p id="kpi-rate">--</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHARTS ROW 1 -->
+        <section class="card">
+            <h2>Fraud Overview</h2>
+
+            <div class="chart-grid">
+                <div class="chart-box">
+                    <h3>Fraud vs Non-Fraud</h3>
+                    <canvas id="fraudPieChart"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <h3>Fraud by Network Type</h3>
+                    <canvas id="fraudNetworkChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHARTS ROW 2 -->
+        <section class="card">
+            <h2>Trends</h2>
+
+            <div class="chart-grid">
+                <div class="chart-box full-width">
+                    <h3>Transactions Over Time</h3>
+                    <canvas id="transactionsTimeChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHARTS ROW 3 -->
+        <section class="card">
+            <h2>Fraud Distribution</h2>
+
+            <div class="chart-grid">
+                <div class="chart-box full-width">
+                    <h3>Fraud by Transaction Type</h3>
+                    <canvas id="fraudTypeChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Dashboard JS (next step) -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
 </body>
 </html>
